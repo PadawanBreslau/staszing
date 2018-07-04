@@ -4,3 +4,5 @@ class Dashing.List extends Dashing.Widget
       $(@node).find('ol').remove()
     else
       $(@node).find('ul').remove()
+  onData: (data) ->
+    $(@node).css('background-color', data.color)

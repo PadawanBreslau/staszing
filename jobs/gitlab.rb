@@ -25,5 +25,24 @@ SCHEDULER.every '30m', :first_in => 0 do |job|
   last_commit_time_h = distance_of_time_in_words_to_now(Time.parse(last_commit_time))
   last_commit_msg = commit["message"]
 
-  send_event('gitlab', { items: [{ label: 'Last push', value: last_push_h},  { label: 'Last commit', value: last_commit_time_h}, { label: 'Commit', value: last_commit_msg} ] })
+  color = color(Time.parse(last_commit_time))
+
+  send_event('gitlab', { items: [{ label: 'Last push', value: last_push_h},  { label: 'Last commit', value: last_commit_time_h}, { label: 'Commit', value: last_commit_msg} ], color: color })
 end # SCHEDULER
+
+def color(time)
+  time_diff = ((Time.now - time) / 3600).round
+  if time_diff < 125
+    green(time_diff*2)
+  else
+    red(time_diff*2)
+  end
+end
+
+def green(diff)
+  "#00#{(255 - diff).to_s(16)}00"
+end
+
+def red(diff)
+  "##{(255 - diff).to_s(16)}0000"
+end
