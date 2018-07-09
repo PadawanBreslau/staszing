@@ -7,10 +7,10 @@ require './helpers/color_helper'
 include ActionView::Helpers::DateHelper
 include ColorHelper
 
-gitlab_token = "c_ym3dVsG-sG6zRsxJXy"
 gitlab_uri = "https://gitlab.com/"
 
 SCHEDULER.every '30m', :first_in => 0 do |job|
+  gitlab_token =  ENV['GITLAB_TOKEN']
   uri = URI("#{gitlab_uri}api/v4/projects/3938540/events?private_token=#{gitlab_token}")
   response = Net::HTTP.get(uri)
   events = JSON.parse(response)
