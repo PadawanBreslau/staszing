@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'json'
+require 'action_view'
+require 'koala'
+require './helpers/color_helper'
+
+include ActionView::Helpers::DateHelper
+include ColorHelper
+
+SCHEDULER.every '30m', :first_in => 0 do |job|
+end
