@@ -17,7 +17,7 @@ SCHEDULER.every '30m', :first_in => 0 do |job|
 
   last_commit_time_h = distance_of_time_in_words_to_now(last_commit_time)
 
-  color = color(last_commit_time)
+  color = gsb_color(last_commit_time)
 
   send_event('github_gsb',
   { items: [
@@ -28,7 +28,7 @@ end
 
 private
 
-def color(time)
+def gsb_color(time)
   time_diff = ((Time.now - time) / 3600).round
   if time_diff < 250
     green(time_diff/2)
