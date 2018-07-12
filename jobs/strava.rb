@@ -2,21 +2,29 @@
 require 'strava/api/v3'
 
 SCHEDULER.every '30m', :first_in => 0 do |job|
-  access_token = 'd60bfec96d033f008641de4c628f02feefe2be3e'
+  access_token = ENV['STRAVA_TOKEN']
   client = client(access_token)
   my_activities = client.list_athlete_activities
   recent_activities = recent(my_activities)
 
   @run_sum = 0.0
   @bike_sum = 0.0
+  @run_time = 0.0
+  @bike_time = 0.0
 
   recent_activities.each do |act|
     if act["type"] == 'Ride'
       @bike_sum += act["distance"] / 1000.0
+      @bike_time += act['moving_time']
     elsif act["type"] == 'Run'
       @run_sum += act["distance"] / 1000.0
+      @run_time += act['moving_time']
     end
   end
+
+  @avg_bike_speed = (@bike_sum / (@bike_time / 3600.0)).round(2)
+  @avg_run_speed = (@run_sum / (@run_time / 3600.0)).round(2)
+
 
   send_event('sport', { items: items, color: sport_color })
 end
@@ -30,7 +38,15 @@ def items
     {
       label: 'Walk/Run',
       value: "#{@run_sum} km"
-    }
+    },
+    {
+      label: 'AVG Bike speed',
+      value: "#{@avg_bike_speed} km/h"
+    },
+    {
+      label: 'AVG Walk speed',
+      value: "#{@avg_run_speed} km/h"
+    },
   ]
 end
 
@@ -38,8 +54,8 @@ def sport_color
   count = (@bike_sum + @run_sum*3).to_i
   if count > 120
     green((200-count).abs)
-  elsif count > 80
-    blue(80-count)
+  elsif count > 60
+    blue(60-count)
   else
     red(120-count)
   end
