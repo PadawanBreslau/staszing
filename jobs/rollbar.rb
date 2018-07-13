@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
-SCHEDULER.every '30m', :first_in => 0 do |job|
+SCHEDULER.every '10m', :first_in => 3 do |job|
   key = ENV['ROLLBAR_KEY']
   uri = URI("https://api.rollbar.com/api/1/items?access_token=#{key}&status=active")
   errors = rollbar_errors(uri)
   analyze(errors)
 
-  items = errors.map{ |e| {label: e["title"], value: e["counter"]} }
+  items = errors.map{ |e| {label: e["title"][0..120], value: e["counter"]} }
 
   send_event('rollbar', { items: items, color: @color })
 end
@@ -15,7 +15,7 @@ def rollbar_errors(uri)
   response = Net::HTTP.get(uri)
   JSON.parse(response)["result"]["items"].select{ |e| e["status"] == 'active' }
 rescue StandardError
-  {}
+  []
 end
 
 def analyze(errors)
@@ -28,6 +28,8 @@ def analyze(errors)
   else
     @color = green
   end
+rescue NoMethodError
+  @color = green
 end
 
 def recent_error?(errs)
