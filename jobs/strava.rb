@@ -33,11 +33,11 @@ def items
   [
     {
       label: 'Bike',
-      value: "#{@bike_sum} km"
+      value: "#{@bike_sum.round(3)} km"
     },
     {
       label: 'Walk/Run',
-      value: "#{@run_sum} km"
+      value: "#{@run_sum.round(3)} km"
     },
     {
       label: 'AVG Bike speed',
