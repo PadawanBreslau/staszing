@@ -9,7 +9,7 @@ include ColorHelper
 
 gitlab_uri = "https://gitlab.com/"
 
-SCHEDULER.every '30m', :first_in => 0 do |job|
+SCHEDULER.every '25m', :first_in => 0 do |job|
   gitlab_token =  ENV['GITLAB_TOKEN']
   uri = URI("#{gitlab_uri}api/v4/projects/3938540/events?private_token=#{gitlab_token}")
   response = Net::HTTP.get(uri)

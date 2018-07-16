@@ -29,6 +29,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
+    hashie (3.5.7)
     httmultiparty (0.3.16)
       httparty (>= 0.7.3)
       mimemagic
@@ -108,6 +109,12 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    wakatime (0.2.2)
+      activesupport
+      addressable
+      hashie
+      json
+      multipart-post
 
 PLATFORMS
   ruby
@@ -122,6 +129,10 @@ DEPENDENCIES
   smashing
   steam-api
   strava-api-v3
+  wakatime
+
+RUBY VERSION
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.1

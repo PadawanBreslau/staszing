@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-SCHEDULER.every '10m', :first_in => 3 do |job|
+SCHEDULER.every '14m', :first_in => 3 do |job|
   key = ENV['ROLLBAR_KEY']
   uri = URI("https://api.rollbar.com/api/1/items?access_token=#{key}&status=active")
   errors = rollbar_errors(uri)

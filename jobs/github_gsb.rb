@@ -10,7 +10,7 @@ include ColorHelper
 
 REPOS = %w(bchess gsb)
 
-SCHEDULER.every '30m', :first_in => 0 do |job|
+SCHEDULER.every '28m', :first_in => 0 do |job|
   last_commit = Octokit.commits("PadawanBreslau/gsb").first
   last_commit_time = last_commit[:commit][:author][:date]
   last_commit_msg = last_commit[:commit][:message]

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'strava/api/v3'
 
-SCHEDULER.every '30m', :first_in => 0 do |job|
+SCHEDULER.every '65m', :first_in => 0 do |job|
   access_token = ENV['STRAVA_TOKEN']
   client = client(access_token)
   my_activities = client.list_athlete_activities
