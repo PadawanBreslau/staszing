@@ -1,3 +1,12 @@
+<script type='text/javascript'>
+$(function() {
+  //Dashing.widget_base_dimensions = [250, 230]
+  Dashing.numColumns = 4
+  Dashing.cycleDashboards({timeInSeconds: 30, stagger: true});
+});
+</script>
+
+
 <% content_for :title do %>My dashboard<% end %>
 <div class="gridster">
   <ul>
@@ -27,5 +36,16 @@
     data-width="400"
    ></div>
 </li>
+  </ul>
+</div>
+
+<div class="gridster">
+  <ul>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="sport" data-view="List" data-title="Sport - last week"</div>
+    </li>
+    <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+      <div data-id="steam" data-view="List" data-title="Games last 2 weeks"</div>
+    </li>
   </ul>
 </div>
