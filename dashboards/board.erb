@@ -1,8 +1,9 @@
 <script type='text/javascript'>
 $(function() {
   //Dashing.widget_base_dimensions = [250, 230]
+  var timer = <%= ENV['SLIDE_TIMER'] %>;
   Dashing.numColumns = 4
-  Dashing.cycleDashboards({timeInSeconds: 60, stagger: true});
+  Dashing.cycleDashboards({timeInSeconds: timer, stagger: true});
 });
 </script>
 
