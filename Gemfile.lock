@@ -123,6 +123,7 @@ PLATFORMS
 DEPENDENCIES
   actionview
   activesupport (= 4.1.4)
+  httparty
   koala
   oauth
   octokit
