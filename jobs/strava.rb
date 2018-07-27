@@ -66,5 +66,5 @@ def client(token)
 end
 
 def recent(activities)
-  activities.select{ |a| Time.parse(a["start_date"]) + (7*24*60*60) > Time.now }
+  activities.select{ |a| Time.parse(a["start_date"]) + (10*24*60*60) > Time.now }
 end
