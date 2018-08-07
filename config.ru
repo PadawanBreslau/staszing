@@ -1,6 +1,8 @@
 require 'dashing'
 require 'yaml'
 
+$redis = Redis.new(url: ENV["REDIS_URL"])
+
 configure do
   set :auth_token, 'YOUR_AUTH_TOKEN'
 

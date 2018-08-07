@@ -38,15 +38,7 @@ def items
     {
       label: 'Walk/Run',
       value: "#{@run_sum.round(3)} km"
-    },
-    {
-      label: 'AVG Bike speed',
-      value: "#{@avg_bike_speed} km/h"
-    },
-    {
-      label: 'AVG Walk speed',
-      value: "#{@avg_run_speed} km/h"
-    },
+    }
   ]
 end
 
