@@ -18,12 +18,12 @@ SCHEDULER.every '24h', :first_in => 0 do |job|
 
   prev_new_sentence_count = $redis.get("sentence_count").to_i
 
-  if $redis.set("last_check_date").to_i < Date.today.mdj
+  if $redis.get("last_check_date").to_i < Date.today.mjd
     sentence_count = c.body_str.split(".").count
 
     @count = sentence_count - prev_new_sentence_count
 
-    $redis.set("last_check_date", Date.today.mdj)
+    $redis.set("last_check_date", Date.today.mjd)
     $redis.set("sentence_count", sentence_count)
   else
     @count = prev_new_sentence_count

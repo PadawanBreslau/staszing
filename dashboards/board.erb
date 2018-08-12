@@ -45,8 +45,11 @@ $(function() {
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="sport" data-view="List" data-title="Sport - last week"</div>
     </li>
-    <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
-      <div data-id="steam" data-view="List" data-title="Games last 2 weeks"</div>
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="sport_total" data-view="Text" data-title="Sport - total left" data-moreinfo='# left training'</div>
+    </li>
+    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="sport_total_avg" data-view="Number" data-title="Sport - left avg" data-moreinfo='# avg daily left training'</div>
     </li>
     <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="SlideShow" data-view="Image" data-width="100%"></div>
@@ -58,9 +61,7 @@ $(function() {
     <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
       <div data-id="zyleta_counter" data-view="Number" data-title="Zyleta 2018" data-moreinfo="# till Zyleta starts"></div>
     </li>
-    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
-      <div data-id="habitica_todos" data-view="List" data-title="TODOs" ></div>
-    </li>
+
   </ul>
 </div>
 
@@ -68,6 +69,12 @@ $(function() {
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="ksiazka_counter" data-view="Number" data-title="Ksiazka" data-moreinfo="New sentences last day" </div>
+    </li>
+    <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+      <div data-id="steam" data-view="List" data-title="Games last 2 weeks"</div>
+    </li>
+    <li data-row="1" data-col="4" data-sizex="1" data-sizey="2">
+      <div data-id="habitica_todos" data-view="List" data-title="TODOs" ></div>
     </li>
   </ul>
 </div>

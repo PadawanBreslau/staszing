@@ -16,9 +16,11 @@ SCHEDULER.every '65m', :first_in => 0 do |job|
     if act["type"] == 'Ride'
       @bike_sum += act["distance"] / 1000.0
       @bike_time += act['moving_time']
+      add_riding_time(act)
     elsif act["type"] == 'Run'
       @run_sum += act["distance"] / 1000.0
       @run_time += act['moving_time']
+      add_running_time(act)
     end
   end
 
@@ -27,6 +29,28 @@ SCHEDULER.every '65m', :first_in => 0 do |job|
 
 
   send_event('sport', { items: items, color: sport_color })
+end
+
+def add_running_time(act)
+  if not_logged?(act)
+    all_run_sum = $redis.get('run_sum').to_f
+    new_sum = all_run_sum +  (act["distance"] / 1000.0)
+    $redis.set('run_sum',  new_sum)
+    $redis.set("act_#{act['id']}", 1)
+  end
+end
+
+def add_riding_time(act)
+  if not_logged?(act)
+    all_ride_sum = $redis.get('ride_sum').to_f
+    new_sum = all_ride_sum +  (act["distance"] / 1000.0)
+    $redis.set('ride_sum',  new_sum)
+    $redis.set("act_#{act['id']}", 1)
+  end
+end
+
+def not_logged?(act)
+  $redis.get("act_#{act['id']}").nil?
 end
 
 def items
@@ -58,5 +82,5 @@ def client(token)
 end
 
 def recent(activities)
-  activities.select{ |a| Time.parse(a["start_date"]) + (10*24*60*60) > Time.now }
+  activities.select{ |a| Time.parse(a["start_date"]) + (24*24*60*60) > Time.now }
 end
