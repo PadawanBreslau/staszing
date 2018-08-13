@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-SCHEDULER.every '1m', :first_in => 0 do |job|
+SCHEDULER.every '15m', :first_in => 0 do |job|
   send_event('sport_total', { text: left_km.to_s + " km", color: sport_total_color })
 end
 
