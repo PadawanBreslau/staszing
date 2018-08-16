@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/PadawanBreslau/ruby-wykop
+  revision: 38c638c55b6fdc010d29bba0554c30826fa239d0
+  specs:
+    ruby-wykop (0.2.0)
+      json
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -23,6 +31,8 @@ GEM
     concurrent-ruby (1.0.5)
     curb (0.9.6)
     daemons (1.2.6)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     et-orbi (1.1.4)
       tzinfo
@@ -35,6 +45,8 @@ GEM
       httparty (>= 0.7.3)
       mimemagic
       multipart-post
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     i18n (0.9.5)
@@ -45,12 +57,16 @@ GEM
       faraday
       json (>= 1.8)
     method_source (0.9.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
     minitest (5.11.3)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mustermann (1.0.2)
+    netrc (0.11.0)
     oauth (0.5.4)
     octokit (4.9.0)
       sawyer (~> 0.8.0, >= 0.5.3)
@@ -62,6 +78,10 @@ GEM
     rack-protection (2.0.3)
       rack
     redis (4.0.1)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rmagick (2.16.0)
     rufus-scheduler (3.4.2)
       et-orbi (~> 1.0)
@@ -112,6 +132,9 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     wakatime (0.2.2)
       activesupport
       addressable
@@ -133,6 +156,7 @@ DEPENDENCIES
   pry
   redis
   rmagick
+  ruby-wykop!
   smashing
   steam-api
   strava-api-v3
