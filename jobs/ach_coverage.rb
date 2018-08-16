@@ -14,5 +14,15 @@ SCHEDULER.every '25m', :first_in => 2 do |job|
   uri = URI("#{gitlab_uri}api/v4/projects/3938540/repository/files/coverage%2F.last_run.json/raw?private_token=#{gitlab_token}&ref=master")
   response = Net::HTTP.get(uri)
   result = JSON.parse(response)['result']['covered_percent']
-  send_event('ach_coverage', current: result)
+  send_event('ach_coverage', current: result, color: coverage_color(result))
+end
+
+def coverage_color(result)
+  if result < 80
+    red
+  elsif result > 95
+    green
+  else
+    blue
+  end
 end
