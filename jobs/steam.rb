@@ -15,7 +15,7 @@ SCHEDULER.every '35m', :first_in => 1 do |job|
      sum += game["playtime_2weeks"]
      items << val
   end
-  send_event('steam', { items: items, color: steam_color(sum) })
+  send_event('steam', { items: items, color: steam_color(sum), unordered: true  })
 end
 
 def humanize(val)

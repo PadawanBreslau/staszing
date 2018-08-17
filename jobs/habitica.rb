@@ -8,7 +8,7 @@ SCHEDULER.every '18m', :first_in => 1 do |job|
   get_dailies
   select_dailies
   habit_color
-  send_event('habitica_todos', { items: habit_items, color: habit_color })
+  send_event('habitica_todos', { items: habit_items, color: habit_color, unordered: true  })
 end
 
 def habit_items

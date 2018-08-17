@@ -21,7 +21,7 @@ SCHEDULER.every '90m', :first_in => 0 do |job|
   { items: [
       { label: 'Last commit', value: last_commit_time_h},
        { label: 'Commit', value: last_commit_msg}
-      ], color: color })
+      ], color: color, unordered: true  })
 end
 
 private

@@ -45,7 +45,7 @@ SCHEDULER.every '25m', :first_in => 0 do |job|
     { items: [{ label: 'Last push', value: last_push_h},
         { label: 'Last commit', value: last_commit_time_h},
          { label: 'Commit', value: last_commit_msg}
-        ], color: color })
+        ], color: color, unordered: true })
 end
 
 def color(time)

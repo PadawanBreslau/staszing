@@ -27,8 +27,7 @@ SCHEDULER.every '65m', :first_in => 0 do |job|
   @avg_bike_speed = @bike_time > 0 ? (@bike_sum / (@bike_time / 3600.0)).round(2) : 0.0
   @avg_run_speed = @run_time > 0 ? (@run_sum / (@run_time / 3600.0)).round(2) : 0.0
 
-
-  send_event('sport', { items: items, color: sport_color })
+  send_event('sport', { items: items, color: sport_color, unordered: true  })
 end
 
 def add_running_time(act)

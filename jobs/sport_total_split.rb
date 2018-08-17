@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 SCHEDULER.every '15m', :first_in => 0 do |job|
-  send_event('sport_total_split', { items: split_items })
+  send_event('sport_total_split', { items: split_items, unordered: true  })
 end
 
 

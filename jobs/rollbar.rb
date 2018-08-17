@@ -8,7 +8,7 @@ SCHEDULER.every '14m', :first_in => 3 do |job|
 
   items = errors.map{ |e| {label: e["title"][0..120], value: e["counter"]} }
 
-  send_event('rollbar', { items: items, color: @color })
+  send_event('rollbar', { items: items, color: @color, unordered: true  })
 end
 
 def rollbar_errors(uri)
