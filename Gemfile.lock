@@ -89,6 +89,7 @@ GEM
     sawyer (0.8.1)
       addressable (>= 2.3.5, < 2.6)
       faraday (~> 0.8, < 1.0)
+    sheetsu (1.1.0)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -157,6 +158,7 @@ DEPENDENCIES
   redis
   rmagick
   ruby-wykop!
+  sheetsu
   smashing
   steam-api
   strava-api-v3

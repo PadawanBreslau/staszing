@@ -9,11 +9,11 @@ def split_items
   [
     {
       label: 'Bike',
-      value: "#{$redis.get('ride_sum').to_f / 3.0} km"
+      value: "#{($redis.get('ride_sum').to_f / 3.0).round(3)} km"
     },
     {
       label: 'Walk/Run',
-      value: "#{$redis.get('run_sum').to_f} km"
+      value: "#{($redis.get('run_sum').to_f).round(3)} km"
     }
   ]
 end
