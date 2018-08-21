@@ -7,7 +7,7 @@ SCHEDULER.every '35m', :first_in => 1 do |job|
   games = Steam::Player.recently_played_games(steamid)
   items = []
   sum = 0
-  games["games"].each do |game|
+  games["games"]&.each do |game|
      val = {
        label: game["name"],
        value: humanize(game["playtime_2weeks"])

@@ -12,7 +12,7 @@ SCHEDULER.every '4h', :first_in => 3 do |job|
   )
   data = client.read
 
-  weight = data.select{|d| d["weight"].present? }.last(5)
+  weight = data.select{|d| d["weight"].present? }.last(8)
 
   send_event("weight", {
     labels: weight.map{|w| w["date"]},
