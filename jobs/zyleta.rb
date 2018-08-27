@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 SCHEDULER.every '1d', at: '2am', first_in: 0 do |job|
-  zyleta_date = Date.new(2018, 8, 24)
+  zyleta_date = Date.new(2019, 6, 28)
   today = Date.today
 
   days_till = zyleta_date.mjd - today.mjd
@@ -10,9 +10,9 @@ SCHEDULER.every '1d', at: '2am', first_in: 0 do |job|
 end
 
 def zyleta_color(date_till)
-  if date_till > 21
+  if date_till > 100
     green(120-date_till)
-  elsif date_till > 12
+  elsif date_till > 50
     blue
   else
     red
