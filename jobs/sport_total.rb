@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 SCHEDULER.every '15m', :first_in => 1 do |job|
-  left_km = 4800.0 - ($redis.get('ride_sum').to_f / 3.0 + $redis.get('run_sum').to_f)
+  left_km = 4800.0 - ($redis.get('ride_sum').to_f / 3.0 + $redis.get('run_sum').to_f).round(3)
   send_event('sport_total', { text: left_km.to_s + " km", color: sport_total_color(left_km) })
 end
 

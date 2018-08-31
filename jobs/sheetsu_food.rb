@@ -2,7 +2,7 @@ require 'sheetsu'
 require 'fuzzystringmatch'
 
 HEALTH_ONE_FOOD = ['banan', 'jajko na miekko', 'kanapka razowy']
-HEALTH_TWO_FOOD = ['kanapka ser', 'spaghetti', 'ryba']
+HEALTH_TWO_FOOD = ['kanapka ser', 'spaghetti', 'ryba', 'jablko']
 HEALTH_THREE_FOOD = ['jajecznica', 'burrito', 'ryba w panierce']
 HEALTH_FOUR_FOOD = ['parówki', 'tosty']
 HEALTH_FIVE_FOOD = ['racuchy']
@@ -22,7 +22,7 @@ SCHEDULER.every '2h', :first_in => 3 do |job|
   data = client.read
 
   food = data.select{|d| d["food"].present? }.last['food']
-  factor = food_factor(food)
+  factor = food_factor(food).round(2)
 
   send_event('food', current: factor, color: food_color(factor))
 end
