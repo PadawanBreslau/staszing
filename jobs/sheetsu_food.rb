@@ -1,4 +1,5 @@
 require 'sheetsu'
+require 'fuzzystringmatch'
 
 HEALTH_ONE_FOOD = ['banan', 'jajko na miekko', 'kanapka razowy']
 HEALTH_TWO_FOOD = ['kanapka ser', 'spaghetti', 'ryba']
@@ -6,6 +7,7 @@ HEALTH_THREE_FOOD = ['jajecznica', 'burrito', 'ryba w panierce']
 HEALTH_FOUR_FOOD = ['parówki', 'tosty']
 HEALTH_FIVE_FOOD = ['racuchy']
 
+@jarow = FuzzyStringMatch::JaroWinkler.create( :native )
 
 SCHEDULER.every '2h', :first_in => 3 do |job|
   api_key = ENV['SHEETSU_KEY']
@@ -60,5 +62,9 @@ def food_factor(food)
 end
 
 def include_similar?(set, val)
-  set.include?(val.strip)  # INCLUDE SIMILLARS
+  set.include?(val.strip) || set.any?{|s| similar?(s, val)}
+end
+
+def similar?(s, val)
+  @jarow.getDistance(s, val) > 0.825
 end

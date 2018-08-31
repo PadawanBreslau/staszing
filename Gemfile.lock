@@ -9,6 +9,9 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    RubyInline (3.12.4)
+      ZenTest (~> 4.3)
+    ZenTest (4.11.1)
     actionview (4.1.4)
       activesupport (= 4.1.4)
       builder (~> 3.1)
@@ -40,6 +43,8 @@ GEM
     execjs (2.7.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
+    fuzzy-string-match (1.0.1)
+      RubyInline (>= 3.8.6)
     hashie (3.5.7)
     httmultiparty (0.3.16)
       httparty (>= 0.7.3)
@@ -150,6 +155,7 @@ DEPENDENCIES
   actionview
   activesupport (= 4.1.4)
   curb
+  fuzzy-string-match
   httparty
   koala
   oauth
