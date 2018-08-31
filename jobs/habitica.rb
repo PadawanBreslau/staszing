@@ -86,5 +86,8 @@ def habit_color
 end
 
 def urgent_todo(td)
-  !!td["date"] && !td["completed"] && td["priority"] > 1.0 && Date.parse(td["date"]).mjd - Date.today.mjd < 21
+  !!td["date"] && !td["date"].empty? && !td["completed"] && td["priority"] > 1.0 && Date.parse(td["date"]).mjd - Date.today.mjd < 21
+rescue ArgumentError
+  puts "Invalid data: #{td.inspect}"
+  false
 end
