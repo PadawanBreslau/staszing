@@ -1,10 +1,10 @@
 require 'sheetsu'
 require 'fuzzystringmatch'
 
-HEALTH_ONE_FOOD = ['banan', 'jajko na miekko', 'kanapka razowy']
-HEALTH_TWO_FOOD = ['kanapka ser', 'spaghetti', 'ryba', 'jablko']
-HEALTH_THREE_FOOD = ['jajecznica', 'burrito', 'ryba w panierce']
-HEALTH_FOUR_FOOD = ['parówki', 'tosty']
+HEALTH_ONE_FOOD = ['banan', 'jajko na miekko', 'kanapka razowy', 'guacamole', 'herbata']
+HEALTH_TWO_FOOD = ['kanapka ser', 'spaghetti', 'ryba', 'jablko', 'jogurt owocowy']
+HEALTH_THREE_FOOD = ['jajecznica', 'burrito', 'ryba w panierce', 'tortilla kurczak']
+HEALTH_FOUR_FOOD = ['parówki', 'tosty', 'pizza', 'parowki']
 HEALTH_FIVE_FOOD = ['racuchy']
 
 @jarow = FuzzyStringMatch::JaroWinkler.create( :native )
