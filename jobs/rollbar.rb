@@ -13,7 +13,7 @@ end
 
 def rollbar_errors(uri)
   response = Net::HTTP.get(uri)
-  JSON.parse(response)["result"]["items"].select{ |e| e["status"] == 'active' }
+  JSON.parse(response)["result"]["items"].select{ |e| e["status"] == 'active' && e["environment"] == 'production'}
 rescue StandardError
   []
 end
