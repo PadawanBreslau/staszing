@@ -1,0 +1,32 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #ec663c;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+$updated-color:     rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-text styles
+// ----------------------------------------------------------------------------
+.widget-text {
+
+  background-color: $background-color;
+
+  .title {
+    color: $title-color;
+  }
+
+  &.large h3 {
+    font-size: 65px;
+  }
+
+  .health-icon {
+    font-size: 65px;
+  }
+
+  .updated-at {
+    color: $updated-color;
+  }
+}
