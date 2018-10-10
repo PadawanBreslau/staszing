@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 SCHEDULER.every '1d', at: '2am', first_in: 0 do |job|
-  zyleta_date = Date.new(2019, 6, 28)
+  zyleta_date = Date.new(2019, 6, 8)
   today = Date.today
 
   days_till = zyleta_date.mjd - today.mjd
