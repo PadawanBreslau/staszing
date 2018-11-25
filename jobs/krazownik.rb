@@ -7,7 +7,7 @@ SCHEDULER.every '24h', :first_in => 0 do |job|
   c.headers["User-Agent"] = "staszing"
   c.perform
 
-  interested_count = 57
+  interested_count = 65
 
   send_event('krazownik', current: interested_count)
 end
