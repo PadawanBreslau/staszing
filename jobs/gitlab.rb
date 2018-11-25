@@ -12,7 +12,7 @@ gitlab_uri = "https://gitlab.com/"
 SCHEDULER.every '25m', :first_in => 0 do |job|
   gitlab_token =  ENV['GITLAB_TOKEN']
   uri = URI("#{gitlab_uri}api/v4/projects/3938540/events?private_token=#{gitlab_token}")
-  uri_fr = URI("#{gitlab_uri}api/v4/projects/7940951/events?private_token=#{gitlab_token}")
+  uri_fr = URI("#{gitlab_uri}api/v4/projects/9600353/events?private_token=#{gitlab_token}")
 
   response = Net::HTTP.get(uri)
   events_b = JSON.parse(response)
@@ -29,7 +29,7 @@ SCHEDULER.every '25m', :first_in => 0 do |job|
   response = Net::HTTP.get(uri_commit)
   commit_b = JSON.parse(response).first
 
-  uri_commit_fr = URI("#{gitlab_uri}api/v4/projects/7940951/repository/commits?private_token=#{gitlab_token}")
+  uri_commit_fr = URI("#{gitlab_uri}api/v4/projects/9600353/repository/commits?private_token=#{gitlab_token}")
   response = Net::HTTP.get(uri_commit_fr)
   commit_fr = JSON.parse(response).first
 
