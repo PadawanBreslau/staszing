@@ -9,7 +9,7 @@ include ActionView::Helpers::DateHelper
 include ColorHelper
 
 SCHEDULER.every '90m', :first_in => 0 do |job|
-  last_commit = Octokit.commits("PadawanBreslau/bchess").first
+  last_commit = Octokit.commits("visualitypl/bchess").first
   last_commit_time = last_commit[:commit][:author][:date]
   last_commit_msg = last_commit[:commit][:message]
 
