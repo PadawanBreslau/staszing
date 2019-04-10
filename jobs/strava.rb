@@ -17,7 +17,7 @@ SCHEDULER.every '65m', :first_in => 0 do |job|
       @bike_sum += act["distance"] / 1000.0
       @bike_time += act['moving_time']
       add_riding_time(act)
-    elsif act["type"] == 'Run'
+    elsif act["type"] == 'Run' || act["type"] == 'Hike'
       @run_sum += act["distance"] / 1000.0
       @run_time += act['moving_time']
       add_running_time(act)
